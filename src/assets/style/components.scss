@@ -1,0 +1,44 @@
+.pagination {
+  margin: 0 -10px;
+
+  .page-item {
+    padding: 0 10px;
+
+    > a {
+      background-color: transparent !important;
+      border-radius: 50% !important;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      padding: 0;
+      text-align: center;
+      border-width: 1px;
+      border-color: transparent !important;
+      color: $black !important;
+      box-shadow: none !important;
+    }
+
+    &:not(.disabled).active,
+    &:not(.disabled):hover {
+      > a {
+        border-width: 1px;
+        border-color: $primary !important;
+        color: $primary !important;
+      }
+    }
+
+    &.disabled {
+      > a {
+        color: $gray-300 !important;
+      }
+    }
+  }
+
+  .input-jump-page {
+    width: 115px;
+
+    input {
+      text-align: center;
+    }
+  }
+}

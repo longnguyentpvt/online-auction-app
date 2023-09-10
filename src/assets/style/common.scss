@@ -1,0 +1,48 @@
+svg {
+  width: 100%;
+}
+
+.mw-0 {
+  min-width: 0;
+}
+
+.mh-0 {
+  min-width: 0;
+}
+
+.fixed-header {
+  z-index: $zindex-fixed;
+
+  .nav-link.active {
+    color: rgba(var(--bs-warning-rgb), 1) !important;
+    cursor: default;
+    text-decoration: underline;
+  }
+
+  .fixed-header-container {
+    height: 4rem;
+  }
+
+  .header__user-info {
+    cursor: pointer;
+  }
+
+  .header__user-avatar {
+    width: 3rem;
+    height: 3rem;
+    padding: 0.6rem;
+  }
+
+  .header__user-name {
+    text-align: right;
+    width: 6rem;
+  }
+}
+
+.header__user_dropdown {
+  z-index: $zindex-fixed + 100;
+}
+
+.main-body.has-fixed-header {
+  padding-top: 4rem;
+}

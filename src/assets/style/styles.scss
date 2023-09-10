@@ -1,0 +1,13 @@
+@import "config";
+@import "~bootstrap/scss/bootstrap";
+
+@each $color, $value in $grays {
+  .text-gray-#{$color} {
+    color: $value;
+  }
+}
+
+@import "components";
+@import "common";
+@import "login-page";
+

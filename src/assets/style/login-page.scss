@@ -1,0 +1,22 @@
+#main-login-page {
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  .login-page__container {
+    height: 100%;
+  }
+
+  .login-page__form-card {
+    border-radius: 0.6rem;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 40rem;
+    }
+  }
+
+  .login-page__login-btn {
+    width: 6rem;
+  }
+
+  height: 100vh;
+}

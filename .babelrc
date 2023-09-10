@@ -1,0 +1,43 @@
+{
+  "presets" : [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns" : "usage",
+        "corejs" : "3.32.2"
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins" : [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-proposal-optional-chaining",
+    [
+      "module-resolver",
+      {
+        "root" : [
+          "./src"
+        ],
+        "alias" : {
+          "*" : "./src/assets",
+          "services" : "./src/services",
+          "route" : "./src/route",
+          "test" : "./src/test",
+          "components" : "./src/components",
+          "container" : "./src/container",
+          "data" : "./src/data",
+          "types" : "./src/types",
+          "pages" : "./src/pages",
+          "utils" : "./src/utils",
+          "apis" : "./src/apis",
+          "hooks": "./src/hooks",
+          "model": "./src/model",
+          "locale": "./src/locale"
+        }
+      }
+    ]
+  ]
+}
