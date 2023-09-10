@@ -1,0 +1,58 @@
+name: Staging
+
+on:
+  push:
+    tags:
+      - staging/main/*
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User ubuntu
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_KEY: ${{ secrets.STAGING_PEM }}
+          SSH_HOST: ${{ secrets.STAGING_HOST }}
+
+      - name: Setup .evn file
+        run: |
+          echo 'API_HOST="http://15.235.146.167/apis/v1"' >> .env
+          echo 'ASSETS_PREFIX=/' >> .env
+
+      - name: Build project
+        run: |
+          npm install -g yarn
+          yarn install
+          yarn build
+
+      - name: Deploying to host
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ubuntu
+          key: ${{ secrets.STAGING_PEM }}
+          port: 22
+          source: "dist/*"
+          target: "/home/ubuntu/online-auction/app-fe"
+          overwrite: true
+
+      - name: Start the app
+        run: ssh staging 'pm2 restart online-auction-app'

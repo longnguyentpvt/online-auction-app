@@ -51,11 +51,13 @@ function MarketItemRowCard(props: MarketItemRowCardProps): ReactElement {
       <CardBody>
         <Row className="g-3">
           <Col xs={ 12 } xl={ 4 }>
-            <div className="fw-bold">
-              Name
-            </div>
-            <div className="text-gray-600">
-              { name }
+            <div>
+              <div className="fw-bold">
+                Name
+              </div>
+              <div className="text-gray-600 mw-0 text-truncate">
+                { name }
+              </div>
             </div>
           </Col>
           <Col xs={ 12 } xl={ 2 }>
@@ -77,11 +79,13 @@ function MarketItemRowCard(props: MarketItemRowCardProps): ReactElement {
           {
             mine && !isDraft && (
               <Col xs={ 12 } xl={ 3 }>
-                <div className="fw-bold">
-                  Actions
-                </div>
-                <div className="text-warning">
-                  Your Item
+                <div className="text-end">
+                  <div className="fw-bold">
+                    Actions
+                  </div>
+                  <div className="text-warning">
+                    Your Item
+                  </div>
                 </div>
               </Col>
             )
