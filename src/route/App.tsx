@@ -6,11 +6,13 @@ import React, {
 import {
   BrowserRouter,
   Route,
-  Routes
+  Routes,
+  useLocation
 } from "react-router-dom";
 
 import {
-  LoginPage
+  LoginPage,
+  NotFoundPage
 } from "pages";
 import MarketRouter from "./market-router";
 
@@ -19,6 +21,7 @@ import SuspenseFallbackFullPage from "components/suspense-fallback-full-page";
 import {
   RoutePath
 } from "data";
+
 const {
   UserLoginPath,
   MarketAppPrefix
@@ -41,6 +44,8 @@ const App = (): React.ReactElement => {
             <Route
               path={ UserLoginPath }
               element={ <LoginPage/> }/>
+
+            <Route path="*" element={ <NotFoundPage /> }/>
           </Routes>
         </Suspense>
       </BrowserRouter>

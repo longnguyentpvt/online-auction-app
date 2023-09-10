@@ -4,7 +4,7 @@ import {
   Route
 } from "react-router-dom";
 
-import { MarketItemsPage } from "pages";
+import { MarketItemsPage, NotFoundPage } from "pages";
 
 import { AccountSessionExpiredModal } from "components/modals";
 
@@ -24,6 +24,8 @@ function MarketRouter(): ReactElement {
         <>
           <Routes>
             <Route path={ MarketItemsPathName + "/:itemStatus" } element={ <MarketItemsPage/> }/>
+
+            <Route path="*" element={ <NotFoundPage/> }/>
           </Routes>
         </>
       }
