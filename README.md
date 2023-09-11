@@ -29,6 +29,9 @@ http://15.235.146.167:3100/app/user/signin
 
   `yarn start:dev`
 
+# How To Run Test
+All test cases is under folder __test__, to execute the test please run this command
+
 # How To deploy
 Repository is using docker and github tag for deployment
 

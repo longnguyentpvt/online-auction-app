@@ -46,6 +46,11 @@ const updateAccountInfo = async(name: string, balance: number) : Promise<void> =
   data.name = name;
   data.balance = balance;
 
+  console.log("updateAccountInfo", {
+    name,
+    balance
+  })
+
   onAccountChange();
 };
 
