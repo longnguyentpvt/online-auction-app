@@ -19,6 +19,7 @@ import {
   FormFeedback
 } from "reactstrap";
 import {
+  NavLink,
   useNavigate
 } from "react-router-dom";
 
@@ -32,6 +33,7 @@ import {
 import { SignInError } from "types/services";
 
 import { RoutePath } from "data";
+
 const {
   MarketItemsOngoingPage: MarketItemsPath
 } = RoutePath;
@@ -44,13 +46,13 @@ const LoginPage = (): ReactElement => {
   const [
     inLogin,
     setInLogin
-  ] = useState<boolean>();
+  ] = useState<boolean>(false);
   const [
     formErrorMap,
     setFormErrorMap
   ] = useState<Record<SignInError, boolean>>({
-    [SignInError.InvalidEmail] : false,
-    [SignInError.IncorrectEmailOrPassword] : false
+    [SignInError.InvalidEmail]: false,
+    [SignInError.IncorrectEmailOrPassword]: false
   });
 
   const [translations] = useLocale();
@@ -74,11 +76,11 @@ const LoginPage = (): ReactElement => {
   ]);
 
   const onInputChange = (): void => {
-    setFormErrorMap((prevState : Record<SignInError, boolean>) => {
+    setFormErrorMap((prevState: Record<SignInError, boolean>) => {
       return {
         ...prevState,
-        [SignInError.InvalidEmail] : false,
-        [SignInError.IncorrectEmailOrPassword] : false
+        [SignInError.InvalidEmail]: false,
+        [SignInError.IncorrectEmailOrPassword]: false
       };
     });
   };
@@ -93,7 +95,7 @@ const LoginPage = (): ReactElement => {
     const { errors } = await loginByUsernameAndPassword(email, password);
 
     if (!!errors) {
-      const newErrorMap : Record<SignInError, boolean> = {} as Record<SignInError, boolean>;
+      const newErrorMap: Record<SignInError, boolean> = {} as Record<SignInError, boolean>;
       for (const error of errors) {
         newErrorMap[error] = true;
       }
@@ -111,19 +113,19 @@ const LoginPage = (): ReactElement => {
       <div className="d-flex align-items-center justify-content-center login-page__container px-3 px-lg-0">
         <Card className="border-0 shadow flex-fill login-page__form-card">
           <Row className="align-items-center h-100">
-            <Col xx={12}>
+            <Col xx={ 12 }>
               <div className="p-5">
                 <div>
-                  <Form onSubmit={loginToDashboard}>
+                  <Form onSubmit={ loginToDashboard }>
                     <FormGroup>
                       <Label>
-                        {translations("form.login.label.username")}
+                        { translations("form.login.label.username") }
                       </Label>
                       <Input
-                        onChange={onInputChange}
-                        innerRef={emailInputRef}
+                        onChange={ onInputChange }
+                        innerRef={ emailInputRef }
                         type="text"
-                        placeholder={translations("form.login.hint.username")}/>
+                        placeholder={ translations("form.login.hint.username") }/>
 
                       <FormFeedback className={ !!formErrorMap[SignInError.InvalidEmail] ? "d-block" : "" }>
                         { translations("form.login.error.invalidEmail") }
@@ -132,13 +134,13 @@ const LoginPage = (): ReactElement => {
 
                     <FormGroup>
                       <Label>
-                        {translations("form.login.label.password")}
+                        { translations("form.login.label.password") }
                       </Label>
                       <Input
-                        onChange={onInputChange}
-                        innerRef={passwordInputRef}
+                        onChange={ onInputChange }
+                        innerRef={ passwordInputRef }
                         type="password"
-                        placeholder={translations("form.login.hint.password")}/>
+                        placeholder={ translations("form.login.hint.password") }/>
 
                       <FormFeedback className={ !!formErrorMap[SignInError.IncorrectEmailOrPassword] ? "d-block" : "" }>
                         { translations("form.login.error.incorrectCredential") }
@@ -148,7 +150,7 @@ const LoginPage = (): ReactElement => {
                     <FormGroup className="mt-4 mb-0">
                       <div className="d-grid login-page__login-btn m-auto">
                         <Button
-                          disabled={inLogin}
+                          disabled={ inLogin }
                           type="submit"
                           color="primary">
                           {
@@ -169,6 +171,9 @@ const LoginPage = (): ReactElement => {
                       </div>
                     </FormGroup>
                   </Form>
+                </div>
+                <div className="text-center">
+                  New member? <NavLink to={ RoutePath.UserRegisterPath }>Signup</NavLink>
                 </div>
               </div>
             </Col>

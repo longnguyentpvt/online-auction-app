@@ -53,7 +53,6 @@ export const loginByUsernameAndPassword = async (username: string, password: str
     errors,
     data: result
   };
-
 }
 
 export const logout = async () : Promise<boolean> => {

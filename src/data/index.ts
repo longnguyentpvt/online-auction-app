@@ -1,6 +1,7 @@
 const PlatformPrefix = "/app";
 
 const UserLoginPath = `${ PlatformPrefix }/user/signin`;
+const UserRegisterPath = `${ PlatformPrefix }/user/register`;
 
 const MarketAppPrefix = `${ PlatformPrefix }/market`;
 
@@ -12,6 +13,7 @@ const MarketMyItemsPage = `${ MarketAppPrefix }${ MarketItemsPathName }/mine`;
 
 export const RoutePath = {
   UserLoginPath,
+  UserRegisterPath,
   MarketAppPrefix,
   MarketItemsPathName,
   MarketItemsOngoingPage,

@@ -25,6 +25,26 @@ export const authenticateCredentialApi = async (
   return await apiCall<AuthCredentialResponse>(request);
 };
 
+export const createAccountApi = async (
+  email: string,
+  password: string,
+  name: string
+): Promise<ApiResponse<AccountInfoResponse>> => {
+  const requestBody = {
+    email,
+    password,
+    name
+  };
+
+  const request: ApiRequest = {
+    url: "/user/account/register",
+    method: "POST",
+    data: requestBody,
+    authToken: false
+  };
+  return await apiCall<AccountInfoResponse>(request);
+};
+
 export const retrieveAccountInfoApi = async (): Promise<ApiResponse<AccountInfoResponse>> => {
   const request: ApiRequest = {
     url: "/user/account/info",

@@ -17,6 +17,7 @@ import { getItems } from "services/market";
 
 import { ItemStatus, MarketItemDto } from "types/services";
 import { RoutePath } from "data";
+import { toast } from "react-toastify";
 
 type MarketPageParam = {
   itemStatus: ItemStatus
@@ -63,6 +64,11 @@ function MarketPage(): ReactElement {
     setCurrentTime(moment().valueOf());
     syncInfo();
     closeBidModal();
+
+    toast("Your bid is ordered successfully", {
+      autoClose: 5000,
+      type: "success"
+    });
   }
 
   const onPublishClick = (itemId: number): void => {
@@ -74,6 +80,11 @@ function MarketPage(): ReactElement {
   const onPublishSuccess = (): void => {
     setCurrentTime(moment().valueOf());
     closePublishModal();
+
+    toast("Your item has been published to market", {
+      autoClose: 5000,
+      type: "success"
+    });
   }
 
   const toggleAddItemModalOpen = () => {

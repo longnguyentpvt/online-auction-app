@@ -8,10 +8,10 @@ import {
   DropdownMenu, DropdownItem
 } from "reactstrap";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { UserIcon } from "components/icons";
 import DepositModal from "components/modals/deposit-modal";
-import AddItemModal from "components/modals/add-item-modal";
 
 import useUserAccount from "hooks/useUserAccount";
 
@@ -55,6 +55,11 @@ function FixedHeader(): ReactElement {
   const onDepositSuccess = () => {
     syncInfo();
     toggleDepositModal();
+
+    toast("Balance has been deposited successfully", {
+      autoClose: 5000,
+      type: "success"
+    });
   };
 
   useEffect(() => {

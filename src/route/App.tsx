@@ -12,6 +12,7 @@ import {
 
 import {
   LoginPage,
+  RegisterPage,
   NotFoundPage
 } from "pages";
 import MarketRouter from "./market-router";
@@ -24,6 +25,7 @@ import {
 
 const {
   UserLoginPath,
+  UserRegisterPath,
   MarketAppPrefix
 } = RoutePath
 
@@ -44,6 +46,10 @@ const App = (): React.ReactElement => {
             <Route
               path={ UserLoginPath }
               element={ <LoginPage/> }/>
+
+            <Route
+              path={ UserRegisterPath }
+              element={ <RegisterPage/> }/>
 
             <Route path="*" element={ <NotFoundPage /> }/>
           </Routes>

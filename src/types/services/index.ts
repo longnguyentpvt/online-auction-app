@@ -15,6 +15,14 @@ export enum SignInError {
   InvalidEmail = "InvalidEmail"
 }
 
+export enum RegisterError {
+  InvalidName = "InvalidName",
+  InvalidEmail = "InvalidEmail",
+  InvalidPassword = "InvalidPassword",
+  EmailExisted = "EmailExisted",
+  Unknown = "Unknown",
+}
+
 export enum BidError {
   InvalidPrice = "InvalidPrice",
   InsufficientBalance = "InsufficientBalance",
