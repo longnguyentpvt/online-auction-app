@@ -32,5 +32,5 @@ http://15.235.146.167:3100/app/user/signin
 # How To deploy
 Repository is using docker and github tag for deployment
 
-#####staging/main/*
+##### staging/main/*
 
